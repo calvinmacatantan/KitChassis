@@ -60,18 +60,21 @@ public class Drivetrain extends SubsystemBase {
         SmartDashboard.putData(driveModeChooser);
         SmartDashboard.putNumber("Throttle Constant", throttleConstant);
         SmartDashboard.putNumber("Turn Constant", turnConstant);
+        SmartDashboard.putNumber("Throttle Filter", throttleLimit);
+        SmartDashboard.putNumber("Turn Filter", turnLimit);
     }
 
     public void drive(XboxController driver) {
-        switch (driveMode) {
-            case ARCADE:
-                arcadeDrive(driver.getAxisValue(Axis.LEFT_Y), driver.getAxisValue(Axis.RIGHT_X));
-            case TANK:
+        // switch (driveMode) {
+        //     case ARCADE:
+        //         arcadeDrive(driver.getAxisValue(Axis.LEFT_Y), driver.getAxisValue(Axis.RIGHT_X));
+           //case TANK:
                 tankDrive(driver.getAxisValue(Axis.LEFT_Y), driver.getAxisValue(Axis.RIGHT_Y));
-            case CURVATURE:
-                curvatureDrive(driver.getAxisValue(Axis.LEFT_Y), driver.getAxisValue(Axis.RIGHT_X), !isMoving());
+            // case CURVATURE:
+            //     curvatureDrive(driver.getAxisValue(Axis.LEFT_Y), driver.getAxisValue(Axis.RIGHT_X), Math.abs(driver.getAxisValue(Axis.LEFT_Y)) < 0.05 );
         }
-    }
+//}
+    
 
     @Override
     public void periodic() {
